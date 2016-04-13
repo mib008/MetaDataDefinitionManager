@@ -1,0 +1,12 @@
+################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/MetaDataDefinitionManager/bower_components/angular
+/MetaDataDefinitionManager/dist
+/MetaDataDefinitionManager/.ntvs_analysis.dat
+/.vs/MetaDataDefinitionManager/v14
+/MetaDataDefinitionManager/node_modules
+MetaDataDefinitionManager/bower_components/
+.vs/config/applicationhost.config
+/MetaDataDefinitionManager/modules/config.json

@@ -1,0 +1,35 @@
+{
+  "name": "MetaDataDefinitionManager",
+  "description": "MetaDataDefinitionManager",
+  "main": "server.js",
+  "authors": [
+    "Wei",
+    "Lai"
+  ],
+  "dependencies": {
+    "angular": "1.5.3",
+    "angular-route": "1.5.3",
+    "angular-smart-table": "2.1.8",
+    "metro": "3.0.14",
+    "jquery": ">= 1.9.1",
+    "datatables.net": "1.10.11",
+    "select2": "4.0.2"
+  },
+  "license": "MIT",
+  "moduleType": [
+    "es6",
+    "node"
+  ],
+  "homepage": "index.html",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "resolutions": {
+    "angular": "^1.0.0"
+  }
+}

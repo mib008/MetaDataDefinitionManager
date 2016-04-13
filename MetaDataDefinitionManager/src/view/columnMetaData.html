@@ -1,0 +1,42 @@
+﻿<h1 class="text-light">Search meta data comment in columns: <span class="mif-drive-eta place-right"></span></h1>
+
+<hr class="thin bg-grayLighter">
+
+<span>* Key word in comment:</span>
+<div class="input-control text" data-role="input">
+    <input type="text" ng-model="vm.keyword" ng-class="{error: keywordNull}" />
+    <button class="button helper-button clear"><span class="mif-cross"></span></button>
+</div>
+
+<input class="button primary no-padding-bottom place-right" ng-click="buttonSearch_click()" type="button" value="Search">
+
+<hr class="thin bg-grayLighter">
+
+<div>
+    <h4>{{message}}</h4>
+    <table id="columnMetaDataList" data-role="datatablemk" ng-click="table_click()" class="border bordered striped hovered cell-hovered full-size"></table>
+</div>
+
+<hr class="thin bg-grayLighter">
+
+<div data-role="dialog" id="editDialog" class="padding20 dialog" data-close-button="true" data-windows-style="true">
+    <div class="container">
+        <div class="input-control modern text iconic full-size" data-role="input">
+            <input type="text" ng-model="editVM.columnComment">
+            <span class="label">Column Comment</span>
+            <span class="informer">Comment for this meta data.</span>
+            <span class="icon mif-database"></span>
+        </div>
+
+        <div class="input-control modern text iconic full-size" data-role="input">
+            <input type="text" ng-model="editVM.extendColumnComment">
+            <span class="label">Column Extend Comment</span>
+            <span class="informer">Extend comment for this meta data.</span>
+            <span class="icon mif-database"></span>
+        </div>
+
+        <input class="button primary no-padding-bottom place-right" ng-click="commit_click()" type="button" value="Commit">
+
+    </div>
+    <span class="dialog-close-button"></span>
+</div>

@@ -1,0 +1,61 @@
+﻿<h1 class="text-light">Search meta data comment for tables: <span class="mif-drive-eta place-right"></span></h1>
+
+<hr class="thin bg-grayLighter">
+
+<span>System Name:</span>
+<div class="input-control select">
+    <select ng-model="vm.systemName" ng-options="item for item in systemNameSource">
+        <option value="">-- None --</option>
+    </select>
+</div>
+<span>Table Schema:</span>
+<div class="input-control select">
+    <select ng-model="vm.tableSchema" ng-options="item for item in tableSchemaSource">
+        <option value="">-- None --</option>
+    </select>
+</div>
+<span>Table Name:</span>
+<div class="input-control select">
+    <select ng-model="vm.tableName" ng-options="item for item in tableNameSource">
+        <option value="">-- None --</option>
+    </select>
+</div>
+<span>Key word in comment:</span>
+<div class="input-control text" data-role="input">
+    <input type="text" ng-model="vm.keyword" />
+    <button class="button helper-button clear"><span class="mif-cross"></span></button>
+</div>
+
+<input class="button primary no-padding-bottom place-right" ng-click="buttonSearch_click()" type="button" value="Search">
+
+<hr class="thin bg-grayLighter">
+
+<div>
+    <h4>{{message}}</h4>
+    <table id="metaDataList" data-role="datatablemk" ng-click="table_click()" class="border bordered striped hovered cell-hovered full-size"></table>
+</div>
+
+<hr class="thin bg-grayLighter">
+
+<div data-role="dialog" id="editDialog" class="padding20 dialog" data-close-button="true" data-windows-style="true">
+    <div class="container">
+        <div class="input-control modern text iconic full-size" data-role="input">
+            <input type="text" ng-model="editVM.tableComment">
+            <span class="label">Table Comment</span>
+            <span class="informer">Comment for this meta data.</span>
+            <span class="icon mif-database"></span>
+        </div>
+
+        <div class="input-control modern text iconic full-size" data-role="input">
+            <input type="text" ng-model="editVM.extendTableComment">
+            <span class="label">Table Extend Comment</span>
+            <span class="informer">Extend comment for this meta data.</span>
+            <span class="icon mif-database"></span>
+        </div>
+
+        <button class="button primary no-padding-bottom place-right margin20" ng-click="commit_click()" type="button" value="Commit">Commit</button>
+        <button class="button no-padding-bottom place-right margin20" ng-click="columnDetail_click()" type="button" value="Edit columns">Edit columns</button>
+
+    </div>
+    <span class="dialog-close-button"></span>
+</div>

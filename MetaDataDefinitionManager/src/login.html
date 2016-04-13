@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <meta charset="utf-8" />
+    <title></title>
+
+    <!-- ReSharper disable Html.PathError -->
+
+    <!--<link href="../bower_components/metro/build/css/metro.min.css" rel="stylesheet"/>
+    <link href="../bower_components/metro/build/css/metro-icons.min.css" rel="stylesheet"/>
+    <link href="../bower_components/metro/build/css/metro-responsive.min.css" rel="stylesheet"/>
+    <link href="../bower_components/metro/build/css/metro-rtl.min.css" rel="stylesheet"/>-->
+    <link href="lib/style/bower_components_style.min.css" rel="stylesheet" />
+
+
+    <!--<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/metro/build/js/metro.min.js"></script>-->
+    <script src="lib/bower_components_login.min.js"></script>
+    <style>
+        .login-form {
+            width: 25rem;
+            height: auto;
+            position: fixed;
+            top: 35%;
+            margin-top: -9.375rem;
+            left: 50%;
+            margin-left: -12.5rem;
+            background-color: #ffffff;
+            opacity: 0;
+            -webkit-transform: scale(.8);
+            transform: scale(.8);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            -ms-word-wrap: break-word;
+            word-wrap: break-word;
+        }
+    </style>
+    <script>
+        $(function () {
+            var form = $(".login-form");
+
+            form.css({
+                opacity: 1,
+                "-webkit-transform": "scale(1)",
+                "transform": "scale(1)",
+                "-webkit-transition": ".5s",
+                "transition": ".5s"
+            });
+        });
+    </script>
+
+    <script>
+        angular.module('appLogin', []).controller('loginCtrl', ['$scope', '$http',function ($scope, $http) {
+                $scope.login = function () {
+                    var data = { userName: $scope.userName, userPwd: $scope.userPwd };
+
+                    $http.post("service/login", data).then(function (data) {
+                        sessionStorage.setItem("userInfo", angular.toJson(data.data));
+                        window.location.href = "/";
+                    }, function (data, status) {
+                        $scope.errorMessage = "Login Failed";
+                    });
+                };
+            }
+        ]);
+    </script>
+    <!-- ReSharper restore Html.PathError -->
+</head>
+<body class="bg-darkTeal" ng-app="appLogin">
+    <div ng-controller="loginCtrl" class="login-form padding20 block-shadow">
+        <form id="loginForm">
+            <h1 class="text-light">Login to Meta Data Definition Manager</h1>
+            <hr class="thin" />
+            <br />
+            <div class="input-control modern text iconic full-size" data-role="input">
+                <input type="text" ng-model="userName" ng-class="{error: errorMessage && (errorMessage.length > 0)}">
+                <span class="label">You login</span>
+                <span class="informer">Please enter you user name</span>
+                <span class="placeholder">Input login</span>
+                <span class="icon mif-user"></span>
+            </div>
+
+
+            <!--<div class="input-control text full-size" data-role="input">
+                <label for="userName">User name:</label>
+                <input id="userName" type="text" style="width: 100%" ng-model="userName" ng-class="{error: errorMessage && (errorMessage.length > 0)}" />
+                <button class="button helper-button clear"><span class="mif-cross"></span></button>
+            </div>-->
+            <br />
+
+            <div class="input-control modern password iconic full-size" data-role="input">
+                <input type="password" ng-model="userPwd" ng-class="{error: errorMessage && (errorMessage.length > 0)}">
+                <span class="label">You password</span>
+                <span class="informer">Please enter you password</span>
+                <span class="placeholder">Input password</span>
+                <span class="icon mif-lock"></span>
+                <button class="button helper-button reveal"><span class="mif-looks"></span></button>
+            </div>
+
+            <!--<div class="input-control password full-size" data-role="input">
+                <label for="userPwd">User password:</label>
+                <input id="userPwd" type="password" style="width: 100%" ng-model="userPwd" ng-class="{error: errorMessage && (errorMessage.length > 0)}" />
+                <button class="button helper-button reveal"><span class="mif-looks"></span></button>
+            </div>-->
+            <br />
+            <h4 class="mif-blocked mif-ani-horizontal" style="color: red; padding: 0 0 10px 0;" ng-show="errorMessage && (errorMessage.length > 0)">{{" " + errorMessage}}</h4>
+            <br />
+            <div class="text-light form-actions">
+                <button type="submit" class="button primary" ng-click="login()" autofocus="autofocus">Login</button>
+                <button type="button" class="button link">Cancel</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+﻿<div class="cell size-x200" id="cell-sidebar" style="background-color: #71b1d1; height: 100%" ng-controller="sideBarCtrl">
+    <ul class="sidebar">
+        <li ng-repeat="item in linkList" tag="{{item.tag}}" ng-class="{active:isActive(item.tag)}">
+            <a href="{{item.link}}">
+                <span class="{{item.iconClass}} icon"></span>
+                <span class="title" ng-bind="item.displayName"></span>
+                <span class="counter" ng-bind="item.count || '-'"></span>
+            </a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,46 @@
+﻿<div class="app-bar fixed-top darcula" data-role="appbar" ng-controller="headBarCtrl">
+    <a class="app-bar-element branding">Search Meta Data</a>
+    <span class="app-bar-divider"></span>
+    <ul ng-hide="true" class="app-bar-menu">
+        <li><a href="">Dashboard</a></li>
+        <li>
+            <a href="" class="dropdown-toggle">Project</a>
+            <ul class="d-menu" data-role="dropdown">
+                <li><a href="">New project</a></li>
+                <li class="divider"></li>
+                <li>
+                    <a href="" class="dropdown-toggle">Reopen</a>
+                    <ul class="d-menu" data-role="dropdown">
+                        <li><a href="">Project 1</a></li>
+                        <li><a href="">Project 2</a></li>
+                        <li><a href="">Project 3</a></li>
+                        <li class="divider"></li>
+                        <li><a href="">Clear list</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><a href="">Security</a></li>
+        <li><a href="">System</a></li>
+        <li>
+            <a href="" class="dropdown-toggle">Help</a>
+            <ul class="d-menu" data-role="dropdown">
+                <li><a href="">ChatOn</a></li>
+                <li><a href="">Community support</a></li>
+                <li class="divider"></li>
+                <li><a href="">About</a></li>
+            </ul>
+        </li>
+    </ul>
+    <div class="app-bar-element place-right">
+        <span class="dropdown-toggle"><span class="mif-cog" style="margin-right: 5px;"></span>{{userIndfo.userName || 'User Name'}}</span>
+        <div class="app-bar-drop-container padding10 place-right no-margin-top block-shadow fg-dark" data-role="dropdown" data-no-close="true" style="width: 250px">
+            <h2 class="text-light">Quick settings</h2>
+            <ul class="unstyled-list fg-dark">
+                <li ng-hide="true"><a href="" class="fg-white1 fg-hover-yellow">Profile</a></li>
+                <li ng-hide="true"><a href="" class="fg-white2 fg-hover-yellow">Security</a></li>
+                <li><a ng-click="logout()" class="fg-white3 fg-hover-yellow">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

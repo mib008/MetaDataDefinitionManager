@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <meta charset="utf-8" />
+    <title>Meta Data Definition Manager</title>
+    <!-- ReSharper disable Html.PathError -->
+    <!--<script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/datatables.net/js/jquery.dataTables.js"></script>
+    <script src="../bower_components/select2-4.0.2/dist/js/select2.full.min.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-route/angular-route.js"></script>
+    <script src="../bower_components/angular-smart-table/dist/smart-table.min.js"></script>
+    <script src="../bower_components/metro/build/js/metro.js"></script>-->
+    <script src="lib/bower_components.min.js"></script>
+
+    <!--<link href="../bower_components/metro/build/css/metro.min.css" rel="stylesheet"/>
+    <link href="../bower_components/metro/build/css/metro-icons.min.css" rel="stylesheet"/>
+    <link href="../bower_components/metro/build/css/metro-responsive.min.css" rel="stylesheet"/>
+    <link href="../bower_components/metro/build/css/metro-rtl.min.css" rel="stylesheet"/>-->
+    <link href="lib/style/bower_components_style.min.css" rel="stylesheet" />
+
+    <link href="style/common.min.css" rel="stylesheet" />
+    <script src="bundle.js"></script>
+
+    <script>
+        function pushMessage(t) {
+            var mes = 'Info|Implement independently';
+            $.Notify({
+                caption: mes.split("|")[0],
+                content: mes.split("|")[1],
+                type: t
+            });
+        }
+
+        $(function () {
+            $('.sidebar').on('click', 'li', function () {
+                if (!$(this).hasClass('active')) {
+                    $('.sidebar li').removeClass('active');
+                    $(this).addClass('active');
+                }
+            });
+        });
+    </script>
+    <!-- ReSharper restore Html.PathError -->
+</head>
+<body class="bg-steel" ng-app="app" ng-controller="indexCtrl">
+
+    <!-- ReSharper disable Html.TagNotResolved -->
+    <ng-include src="'view/common/headBarView.html'"></ng-include>
+
+    <div class="page-content flex-grid no-responsive-future" style="height: 100%;">
+        <div class="row" style="height: 100%">
+            <ng-include src="'view/common/sideBarView.html'"></ng-include>
+            <div class="cell auto-size padding20 bg-white" id="cell-content" ng-view></div>
+        </div>
+    </div>
+    <!--<ng-include src="'view/sampleTable.html'"></ng-include>-->
+    <!-- ReSharper restore Html.TagNotResolved -->
+
+</body>
+</html>
