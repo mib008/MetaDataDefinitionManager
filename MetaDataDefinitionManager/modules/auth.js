@@ -54,6 +54,13 @@ module.exports = function () {
         session.forEach(function (item, index) {
             if (item.sessionID === req.sessionID) {
                 targetIndex = index;
+
+                if ((new Date().getMinutes() - item.loginDate.getMinutes()) >= 30) {
+                    session.splice(targetIndex, 1);
+                    targetIndex = -1;
+                } else {
+                    item.loginDate = new Date();
+                }
             }
         });
         
@@ -69,6 +76,13 @@ module.exports = function () {
         session.forEach(function (item, index) {
             if (item.token === req.headers.token) {
                 targetIndex = index;
+
+                if ((new Date().getMinutes() - item.loginDate.getMinutes()) >= 30) {
+                    session.splice(targetIndex, 1);
+                    targetIndex = -1;
+                } else {
+                    item.loginDate = new Date();
+                }
             }
         });
         
@@ -84,6 +98,13 @@ module.exports = function () {
         session.forEach(function (item, index) {
             if (item.token === req.headers.token && item.editable === true) {
                 targetIndex = index;
+
+                if ((new Date().getMinutes() - item.loginDate.getMinutes()) >= 30) {
+                    session.splice(targetIndex, 1);
+                    targetIndex = -1;
+                } else {
+                    item.loginDate = new Date();
+                }
             }
         });
         
