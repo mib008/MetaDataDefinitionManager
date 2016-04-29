@@ -8,7 +8,7 @@ module.exports = function () {
     
     var convertColToDb = function (obj, tableName) {
         if (!obj) return obj;
-
+        
         var columnMapping = undefined;
         
         switch (tableName) {
@@ -26,7 +26,7 @@ module.exports = function () {
                 }
                 break;
         }
-
+        
         if (!columnMapping) return obj;
         
         columnMapping.forEach(function (item, index) {
@@ -45,7 +45,7 @@ module.exports = function () {
         if (!obj) return obj;
         
         var columnMapping = undefined;
-
+        
         switch (tableName) {
             case "table":
                 columnMapping = dataDef.table_dictionary;
@@ -96,10 +96,52 @@ module.exports = function () {
     };
     
     
+    /*
+    * 获得时间差,时间格式为 年-月-日 小时:分钟:秒 或者 年/月/日 小时：分钟：秒
+    * 其中，年月日为全格式，例如 ： 2010-10-12 01:00:00
+    * 返回精度为：秒，分，小时，天
+    */
+    var getDateDiff = function (startTime, endTime, diffType) {
+        try {
+            //将xxxx-xx-xx的时间格式，转换为 xxxx/xx/xx的格式
+            startTime = startTime ? startTime.replace(/\-/g, "/") : undefined;
+            endTime = endTime ? endTime.replace(/\-/g, "/") : undefined;
+            
+            //将计算间隔类性字符转换为小写
+            diffType = diffType.toLowerCase();
+            
+            var sTime = startTime ? new Date(startTime) : new Date(); //开始时间
+            var eTime = endTime ? new Date(endTime) : new Date(); //结束时间
+            //作为除数的数字
+            var divNum = 1;
+            switch (diffType) {
+                case "second":
+                    divNum = 1000;
+                    break;
+                case "minute":
+                    divNum = 1000 * 60;
+                    break;
+                case "hour":
+                    divNum = 1000 * 3600;
+                    break;
+                case "day":
+                    divNum = 1000 * 3600 * 24;
+                    break;
+                default:
+                    break;
+            }
+            
+            return parseInt((eTime.getTime() - sTime.getTime()) / parseInt(divNum));
+        } catch (ex) {
+            return "--";
+        }
+    };
+    
     return {
         convertColToDb: convertColToDb,
         convertColToClient: convertColToClient,
-        parseSql: parseSql
+        parseSql: parseSql,
+        getDateDiff: getDateDiff
     };
 }();
 

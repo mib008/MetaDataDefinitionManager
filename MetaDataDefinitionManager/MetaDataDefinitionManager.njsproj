@@ -33,6 +33,7 @@
     <Compile Include="gulpfile.js" />
     <Compile Include="middleware\checkLogin.js" />
     <Compile Include="middleware\httpRouter.js" />
+    <Compile Include="modules\utility\dateUtility.js" />
     <Compile Include="modules\utility\stringUtility.js" />
     <Compile Include="modules\auth.js" />
     <Compile Include="modules\utility\commonUtility.js" />

@@ -1,5 +1,7 @@
-﻿var colors = require("colors"), 
-    uuid = require('uuid');
+﻿// ReSharper disable Es6Feature
+const colors = require("colors"), 
+      uuid   = require('uuid');
+// ReSharper restore Es6Feature
 
 // ReSharper disable UndeclaredGlobalVariableUsing
 module.exports = function () {
@@ -7,7 +9,14 @@ module.exports = function () {
     
     var session = [];
     
-    var config = require("./configs");
+    // ReSharper disable AssignToImplicitGlobalInFunctionScope
+    // ReSharper disable Es6Feature
+    const config        = require("./configs"),
+          DATE_FORMAT   = "yyyy-MM-dd hh:mm:ss",
+          commonUtility = require("./utility/commonUtility"),
+          dateUtility   = require("./utility/dateUtility");
+    // ReSharper restore Es6Feature
+    // ReSharper restore AssignToImplicitGlobalInFunctionScope
     
     function login(info, req) {
         var targetIndex = -1;
@@ -54,8 +63,8 @@ module.exports = function () {
         session.forEach(function (item, index) {
             if (item.sessionID === req.sessionID) {
                 targetIndex = index;
-
-                if ((new Date().getMinutes() - item.loginDate.getMinutes()) >= 30) {
+                
+                if (commonUtility.getDateDiff(item.loginDate.format(DATE_FORMAT), new Date().format(DATE_FORMAT), "minute") >= 30) {
                     session.splice(targetIndex, 1);
                     targetIndex = -1;
                 } else {
@@ -76,8 +85,9 @@ module.exports = function () {
         session.forEach(function (item, index) {
             if (item.token === req.headers.token) {
                 targetIndex = index;
-
-                if ((new Date().getMinutes() - item.loginDate.getMinutes()) >= 30) {
+                
+                // 年-月-日 小时:分钟:秒
+                if (commonUtility.getDateDiff(item.loginDate.format(DATE_FORMAT), new Date().format(DATE_FORMAT), "minute") >= 30) {
                     session.splice(targetIndex, 1);
                     targetIndex = -1;
                 } else {
@@ -98,8 +108,8 @@ module.exports = function () {
         session.forEach(function (item, index) {
             if (item.token === req.headers.token && item.editable === true) {
                 targetIndex = index;
-
-                if ((new Date().getMinutes() - item.loginDate.getMinutes()) >= 30) {
+                
+                if (commonUtility.getDateDiff(item.loginDate.format(DATE_FORMAT), new Date().format(DATE_FORMAT), "minute") >= 30) {
                     session.splice(targetIndex, 1);
                     targetIndex = -1;
                 } else {
